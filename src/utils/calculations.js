@@ -13,8 +13,8 @@ export const CUSTOM_COLOR_POOL = [
   '#c084fc', '#fb7185', '#86efac', '#fda4af',
 ]
 
-export const FREE_TIME_COLOR = '#4ade80'
-export const LIVED_COLOR = '#27272a'
+export const FREE_TIME_COLOR = '#c8a45a'
+export const LIVED_COLOR = '#2a2a2e'
 
 const DAYS_PER_MONTH = 30.44
 

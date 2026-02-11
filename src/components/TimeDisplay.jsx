@@ -22,7 +22,7 @@ function TimeDisplay({ freeMonths, remainingMonths }) {
         </div>
         {isNegative ? (
           <span className="time-warning">
-            Your activities exceed 24 hours — adjust your inputs above.
+            You've planned more than a day can hold. Adjust your activities to reflect reality.
           </span>
         ) : (
           <span className="time-sublabel">

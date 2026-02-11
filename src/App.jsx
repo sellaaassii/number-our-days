@@ -49,8 +49,22 @@ function App() {
           Your Life<span className="hero-accent">,</span> Visualized
         </h1>
         <p className="hero-subtitle">
-          See how you spend your time — and how much you truly have left.
+          &#x23F3; Understand where your time goes and how much remains ahead of you.
         </p>
+        <blockquote className="hero-verses">
+          <p className="hero-verse">
+            <span className="verse-ref">Psalm 90:12</span>
+            "So teach us to number our days, that we may apply our hearts unto wisdom."
+          </p>
+          <p className="hero-verse">
+            <span className="verse-ref">James 4:13-15</span>
+            "You do not even know what will happen tomorrow. What is your life? You are a mist that appears for a little while and then vanishes."
+          </p>
+          <p className="hero-verse">
+            <span className="verse-ref">Ephesians 5:15-17</span>
+            "Be very careful, then, how you live — not as unwise but as wise, making the most of every opportunity."
+          </p>
+        </blockquote>
       </header>
 
       <main className="main-layout">

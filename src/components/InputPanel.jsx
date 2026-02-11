@@ -32,10 +32,13 @@ function InputPanel({ currentAge, expectedAge, categories, onAgeChange, onExpect
             <input
               id="current-age"
               type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
               min="0"
               max="150"
               value={currentAge}
-              onChange={e => onAgeChange(Math.max(0, Number(e.target.value)))}
+              onChange={e => onAgeChange(e.target.value === '' ? 0 : Number(e.target.value))}
+              onKeyDown={e => ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()}
             />
           </div>
           <div className="age-field">
@@ -43,10 +46,13 @@ function InputPanel({ currentAge, expectedAge, categories, onAgeChange, onExpect
             <input
               id="expected-age"
               type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
               min="1"
               max="150"
-              value={expectedAge}
-              onChange={e => onExpectedAgeChange(Math.max(1, Number(e.target.value)))}
+              value={expectedAge || ''}
+              onChange={e => onExpectedAgeChange(e.target.value === '' ? 0 : Number(e.target.value))}
+              onKeyDown={e => ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()}
             />
           </div>
         </div>

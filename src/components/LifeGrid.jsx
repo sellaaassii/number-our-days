@@ -34,8 +34,8 @@ function LifeGrid({ lifeData }) {
     <div className="life-grid-container">
       <h2 className="section-title">Your Life in Months</h2>
       <p className="grid-subtitle">
-        Each dot is one month. <span style={{ color: LIVED_COLOR, textShadow: '0 0 2px #555' }}>Gray</span> = lived.{' '}
-        <span style={{ color: FREE_TIME_COLOR }}>Green</span> = your free time.
+        Each dot is one month. <span style={{ color: '#555' }}>Dark</span> = already lived.{' '}
+        <span style={{ color: FREE_TIME_COLOR }}>Gold</span> = your free time.
       </p>
       <div className="life-grid" role="img" aria-label="Life visualization grid">
         {dots.map((dot, i) => (
