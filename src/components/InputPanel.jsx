@@ -1,8 +1,26 @@
-import { CUSTOM_COLOR_POOL } from '../utils/calculations'
+import { useState, useRef, useEffect } from 'react'
 
 function InputPanel({ currentAge, expectedAge, categories, onAgeChange, onExpectedAgeChange, onCategoryChange, onAddCategory, onRemoveCategory }) {
+  const [isAdding, setIsAdding] = useState(false)
+  const [newName, setNewName] = useState('')
+  const addInputRef = useRef(null)
   const totalHours = categories.reduce((sum, c) => sum + c.hoursPerDay, 0)
   const overBudget = totalHours > 24
+
+  useEffect(() => {
+    if (isAdding && addInputRef.current) {
+      addInputRef.current.focus()
+    }
+  }, [isAdding])
+
+  const handleAddSubmit = (e) => {
+    e.preventDefault()
+    if (newName.trim()) {
+      onAddCategory(newName.trim())
+      setNewName('')
+      setIsAdding(false)
+    }
+  }
 
   return (
     <div className="input-panel">
@@ -93,9 +111,29 @@ function InputPanel({ currentAge, expectedAge, categories, onAgeChange, onExpect
           ))}
         </div>
 
-        <button className="add-category-btn" onClick={onAddCategory}>
-          + Add Activity
-        </button>
+        {isAdding ? (
+          <form className="add-category-form" onSubmit={handleAddSubmit}>
+            <input
+              ref={addInputRef}
+              type="text"
+              placeholder="e.g. Gaming, Reading, Exercise..."
+              value={newName}
+              onChange={e => setNewName(e.target.value)}
+              className="add-category-input"
+              onKeyDown={e => e.key === 'Escape' && setIsAdding(false)}
+            />
+            <button type="submit" className="add-confirm-btn" disabled={!newName.trim()}>
+              Add
+            </button>
+            <button type="button" className="add-cancel-btn" onClick={() => { setIsAdding(false); setNewName('') }}>
+              &times;
+            </button>
+          </form>
+        ) : (
+          <button className="add-category-btn" onClick={() => setIsAdding(true)}>
+            + Add Activity
+          </button>
+        )}
       </div>
     </div>
   )

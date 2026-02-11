@@ -22,16 +22,13 @@ function App() {
     )
   }, [])
 
-  const handleAddCategory = useCallback(() => {
-    const name = prompt('Activity name:')
-    if (!name || !name.trim()) return
-
+  const handleAddCategory = useCallback((name) => {
     const color = CUSTOM_COLOR_POOL[customCount % CUSTOM_COLOR_POOL.length]
     setCategories(prev => [
       ...prev,
       {
         id: `custom-${Date.now()}`,
-        name: name.trim(),
+        name,
         icon: '\u{2B50}',
         color,
         hoursPerDay: 1,
