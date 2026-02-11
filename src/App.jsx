@@ -49,7 +49,7 @@ function App() {
           Your Life<span className="hero-accent">,</span> Visualized
         </h1>
         <p className="hero-subtitle">
-          &#x23F3; Understand where your time goes and how much remains ahead of you.
+          &#x23F3; Understand where your time goes and how much remains ahead of you &#x23F3;
         </p>
         <blockquote className="hero-verses">
           <p className="hero-verse">

@@ -1,5 +1,7 @@
 # Your Life, Visualized
 
+**Live demo:** https://number-our-days.pages.dev
+
 A web app that helps you see how you spend your time and how much free time you truly have left. Input your age, expected lifespan, and daily activities, then watch your life unfold as a dot grid where each dot represents one month.
 
 Inspired by a [TEDx talk](https://www.youtube.com/watch?v=4TMPXK9tw5U) on how we spend our adult lives, and grounded in the wisdom of Psalm 90:12, James 4:13-15, and Ephesians 5:15-17.
