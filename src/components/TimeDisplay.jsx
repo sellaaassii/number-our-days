@@ -5,23 +5,30 @@ const UNITS = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds'
 
 function TimeDisplay({ freeMonths, remainingMonths }) {
   const [unit, setUnit] = useState('months')
+  const isNegative = freeMonths <= 0
 
-  const freeValue = convertTime(freeMonths, unit)
+  const freeValue = convertTime(Math.max(0, freeMonths), unit)
   const totalValue = convertTime(remainingMonths, unit)
 
   return (
-    <div className="time-display">
+    <div className={`time-display ${isNegative ? 'time-display-warning' : ''}`}>
       <div className="time-hero">
         <span className="time-label">Your remaining free time</span>
         <div className="time-value-wrapper">
-          <span className="time-value" key={unit}>
-            {formatNumber(freeValue)}
+          <span className={`time-value ${isNegative ? 'time-value-zero' : ''}`} key={unit}>
+            {isNegative ? '0' : formatNumber(freeValue)}
           </span>
           <span className="time-unit">{unit}</span>
         </div>
-        <span className="time-sublabel">
-          out of {formatNumber(totalValue)} total remaining {unit}
-        </span>
+        {isNegative ? (
+          <span className="time-warning">
+            Your activities exceed 24 hours — adjust your inputs above.
+          </span>
+        ) : (
+          <span className="time-sublabel">
+            out of {formatNumber(totalValue)} total remaining {unit}
+          </span>
+        )}
       </div>
 
       <div className="unit-toggles">
