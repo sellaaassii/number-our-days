@@ -36,7 +36,7 @@ function InputPanel({ currentAge, expectedAge, categories, onAgeChange, onExpect
               pattern="[0-9]*"
               min="0"
               max="150"
-              value={currentAge}
+              value={currentAge || ''}
               onChange={e => onAgeChange(e.target.value === '' ? 0 : Number(e.target.value))}
               onKeyDown={e => ['e', 'E', '+', '-', '.'].includes(e.key) && e.preventDefault()}
             />
