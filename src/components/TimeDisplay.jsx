@@ -3,24 +3,24 @@ import { convertTime, formatNumber } from '../utils/calculations'
 
 const UNITS = ['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']
 
-function TimeDisplay({ freeMonths, remainingMonths }) {
+function TimeDisplay({ freeMonths, remainingMonths, totalHours }) {
   const [unit, setUnit] = useState('months')
-  const isNegative = freeMonths <= 0
+  const isOverBudget = totalHours > 24
 
   const freeValue = convertTime(Math.max(0, freeMonths), unit)
   const totalValue = convertTime(remainingMonths, unit)
 
   return (
-    <div className={`time-display ${isNegative ? 'time-display-warning' : ''}`}>
+    <div className={`time-display ${isOverBudget ? 'time-display-warning' : ''}`}>
       <div className="time-hero">
         <span className="time-label">Your remaining free time</span>
         <div className="time-value-wrapper">
-          <span className={`time-value ${isNegative ? 'time-value-zero' : ''}`} key={unit}>
-            {isNegative ? '0' : formatNumber(freeValue)}
+          <span className={`time-value ${isOverBudget ? 'time-value-zero' : ''}`} key={unit}>
+            {isOverBudget ? '0' : formatNumber(freeValue)}
           </span>
           <span className="time-unit">{unit}</span>
         </div>
-        {isNegative ? (
+        {isOverBudget ? (
           <span className="time-warning">
             You've planned more than a day can hold. Adjust your activities to reflect reality.
           </span>

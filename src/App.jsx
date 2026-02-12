@@ -85,6 +85,7 @@ function App() {
           <TimeDisplay
             freeMonths={lifeData.freeMonths}
             remainingMonths={lifeData.remainingMonths}
+            totalHours={categories.reduce((sum, c) => sum + c.hoursPerDay, 0)}
           />
           <LifeGrid lifeData={lifeData} />
         </section>

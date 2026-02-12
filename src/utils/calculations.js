@@ -30,7 +30,7 @@ export function calculateLife(currentAge, expectedAge, categories) {
   })
 
   const usedMonths = categoryBreakdown.reduce((sum, cat) => sum + cat.months, 0)
-  const freeMonths = Math.max(0, remainingMonths - usedMonths)
+  const freeMonths = remainingMonths - usedMonths
 
   return {
     totalMonths,
@@ -56,6 +56,7 @@ export function convertTime(months, unit) {
 }
 
 export function formatNumber(num) {
+  if (num === 0) return '0'
   if (num >= 1_000_000) {
     return num.toLocaleString('en-US', { maximumFractionDigits: 0 })
   }
